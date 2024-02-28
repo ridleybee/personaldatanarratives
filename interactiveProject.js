@@ -151,8 +151,7 @@ function draw() {
 
 
 function startGame() {
-	buttonYes.show()
-	buttonNo.show()
+
 	background(122, 92, 87)
 
 	let currentString = string.substring(0, currentCharacter)
@@ -172,7 +171,9 @@ function startGame() {
 	if (currentString == `
 hello! welcome to the simulator.
        are you a robot?`)
-	{
+	{	
+		buttonYes.show()
+		buttonNo.show()
 		buttonYes.position(pageMargin, 175)
 		buttonNo.position(pageMargin*2, 175)
 
@@ -247,6 +248,7 @@ function tryAgain(){
 	buttonYes.show()
 
 	background(122, 92, 87)
+	noStroke()
 
 	let currentString = stringAgain.substring(0, currentCharacter)
 	push()
@@ -351,6 +353,7 @@ function quad1(){
 
 
 	background(69, 158, 21)
+	noStroke()
 	//setting
 	if (anyChoice==1){
 		let currentString = stringIntro.substring(0, currentCharacter)
@@ -388,6 +391,7 @@ function quad1(){
 function quad2(){
 
 	background(26, 61, 173)
+	noStroke()
 	//action
 		if (anyChoice==1){
 		let currentString = stringIntro.substring(0, currentCharacter)
@@ -418,6 +422,7 @@ function quad2(){
 function quad3(){
 
 	background(201, 201, 32)
+	noStroke()
 	//interaction
 	if (anyChoice==1){
 		let currentString = stringIntro.substring(0, currentCharacter)
@@ -446,6 +451,7 @@ function quad4(){
 
 
 	background(199, 54, 44)
+	noStroke()
 	//character
 	if (anyChoice==1){
 		let currentString = stringIntro.substring(0, currentCharacter)
@@ -482,6 +488,7 @@ function quad4(){
 function endGame() {
 
 	background(122, 92, 87)
+	noStroke()
 
 	let currentString = stringEnd.substring(0, currentCharacter)
 	push()
@@ -497,7 +504,7 @@ function endGame() {
 }
 
 function keyPressed() {
-	if(keyCode === BACKSPACE && startBool == false && death == false){
+	if(keyCode === BACKSPACE && startBool == false && death == false && endBool == false){
 		colorSelectorBool=true
 		quad1Bool=false
 		quad2Bool=false
