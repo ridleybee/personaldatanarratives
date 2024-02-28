@@ -12,7 +12,7 @@ let death = false
 let deathVar 
 
 //let canvasSize = 1000
-let timer = 3
+let timer = 2
 let anyChoice = 0
 
 // 0 -20
@@ -90,7 +90,8 @@ you feel `+ random(adjective) + `.`;
 you `+ random(verb) + `.`;
 
 	stringInteraction = `
-you `+ random(verb) + ` with ` + random(noun) +`.`;
+you `+ random(verb) + ` with ` + random(noun) +`.
+you `+ random(verb) + ` ` + random(noun) +`.`;
 
 	stringChar = `
 a new identity has been ordered for you. remember it well.
@@ -99,7 +100,7 @@ you are ` + int(random(0, 120)) + ` years old.`;
 
 	stringDeath = `
 you die. ` + random(noun) + ` found you and ` + random(verb) +`s 
-you with ` + random(noun) + `. 
+you with your ` + random(noun) + `. 
 your simulation is over.
 press E to end.`;
 
@@ -238,6 +239,7 @@ function robotTest() {
 		tryAgainBool = true
 		roboBool = false
 		startBool = false
+		currentCharacter = 0
 	}
 
 
@@ -246,6 +248,7 @@ function robotTest() {
 function tryAgain(){
 	buttonNo.show()
 	buttonYes.show()
+
 
 	background(122, 92, 87)
 	noStroke()
@@ -340,7 +343,8 @@ you feel `+ random(adjective) + `.`;
 	stringAction = `
 you `+ random(verb) + `.`;
 	stringInteraction = `
-you `+ random(verb) + ` with ` + random(noun) +`.`;
+you `+ random(verb) + ` with ` + random(noun) +`.
+you `+ random(verb) + ` ` + random(noun) +`.`;
 	stringChar = `
 a new identity has been ordered for you. remember it well.
 your new name is ` + random(noun) + ` and you are from a place called ` + random(noun) + `. 
@@ -352,7 +356,7 @@ you are ` + int(random(0, 120)) + ` years old.`;
 function quad1(){
 
 
-	background(69, 158, 21)
+	background(105, 156, 78)
 	noStroke()
 	//setting
 	if (anyChoice==1){
@@ -365,6 +369,7 @@ function quad1(){
 		pop()
 	
 	}else if (deathVar == 4){
+		background(74, 57, 55)
 		let currentString = stringDeath.substring(0, currentCharacter)
 		push()
 		fill(255)
@@ -390,7 +395,9 @@ function quad1(){
 
 function quad2(){
 
-	background(26, 61, 173)
+	
+
+	background(79, 98, 158)
 	noStroke()
 	//action
 		if (anyChoice==1){
@@ -401,6 +408,16 @@ function quad2(){
 		textAlign(LEFT, TOP)
 		text(currentString, pageMargin, pageMargin, width - pageMargin*2, height - pageMargin)
 		pop()
+	}else if (deathVar == 4){
+		background(74, 57, 55)
+		let currentString = stringDeath.substring(0, currentCharacter)
+		push()
+		fill(255)
+		textSize(30)
+		textAlign(LEFT, TOP)
+		text(currentString, pageMargin, pageMargin, width - pageMargin*2, height - pageMargin)
+		pop()
+		death = true
 	}else {
 		let currentString = stringAction.substring(0, currentCharacter)
 		push()
@@ -421,7 +438,8 @@ function quad2(){
 
 function quad3(){
 
-	background(201, 201, 32)
+
+	background(171, 168, 97)
 	noStroke()
 	//interaction
 	if (anyChoice==1){
@@ -432,6 +450,16 @@ function quad3(){
 		textAlign(LEFT, TOP)
 		text(currentString, pageMargin, pageMargin, width - pageMargin*2, height - pageMargin)
 		pop()		
+	}else if (deathVar == 4){
+		background(74, 57, 55)
+		let currentString = stringDeath.substring(0, currentCharacter)
+		push()
+		fill(255)
+		textSize(30)
+		textAlign(LEFT, TOP)
+		text(currentString, pageMargin, pageMargin, width - pageMargin*2, height - pageMargin)
+		pop()
+		death = true
 	}else {
 		let currentString = stringInteraction.substring(0, currentCharacter)
 		push()
@@ -450,7 +478,8 @@ function quad3(){
 function quad4(){
 
 
-	background(199, 54, 44)
+
+	background(179, 103, 98)
 	noStroke()
 	//character
 	if (anyChoice==1){
@@ -462,6 +491,7 @@ function quad4(){
 		text(currentString, pageMargin, pageMargin, width - pageMargin*2, height - pageMargin)
 		pop()	
 	}else if (deathVar == 4){
+		background(74, 57, 55)
 		let currentString = stringDeath.substring(0, currentCharacter)
 		push()
 		fill(255)
@@ -487,7 +517,8 @@ function quad4(){
 }
 function endGame() {
 
-	background(122, 92, 87)
+
+	background(157, 196, 199)
 	noStroke()
 
 	let currentString = stringEnd.substring(0, currentCharacter)
@@ -521,6 +552,7 @@ function keyPressed() {
 		colorSelectorBool=false
 		startBool=false
 		roboBool=false
+		currentCharacter = 0
 	}
 }
 
@@ -533,6 +565,7 @@ function mouseClicked() {
 			colorSelectorBool = false
 			anyChoice++
 			deathVar = int(random(5))
+			currentCharacter = 0
 			
 		}
 
@@ -540,21 +573,24 @@ function mouseClicked() {
 			quad2Bool = true
 			colorSelectorBool = false
 			anyChoice++
-			
+			deathVar = int(random(5))
+			currentCharacter = 0
 		}
 
 		if (mouseX > windowWidth/3 && mouseY < windowHeight/3){
 			quad3Bool = true
 			colorSelectorBool = false
 			anyChoice++
-			
+			deathVar = int(random(5))
+			currentCharacter = 0
 		}
 
 		if (mouseX > windowWidth/3 && mouseY > windowHeight/3){
 			quad4Bool = true
 			colorSelectorBool = false
 			anyChoice++	
-			deathVar = int(random(5))			
+			deathVar = int(random(5))	
+			currentCharacter = 0		
 	}
 
 }
