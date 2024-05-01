@@ -14,8 +14,7 @@ function draw(){
 
 	noStroke()
 
-	if (squareBrushBool == true)
-	{
+	if (squareBrushBool == true){
 		squareBrush()
 	}
 
